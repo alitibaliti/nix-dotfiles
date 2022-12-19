@@ -5,10 +5,10 @@ with lib;
 let blocklist = fetchurl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
 in {
   networking.extraHosts = ''
-    192.168.1.1   router.home
+    192.168.0.1   router.home
 
     # Hosts
-    ${optionalString (config.time.timeZone == "Europe/Copenhagen") ''
+    ${optionalString (config.time.timeZone == "America/Pacific") ''
         192.168.1.28  ao.home
         192.168.1.20  murasaki.home
         192.168.1.19  shiro.home
@@ -26,7 +26,7 @@ in {
   '';
 
   ## Location config -- since Toronto is my 127.0.0.1
-  time.timeZone = mkDefault "America/Toronto";
+  time.timeZone = mkDefault "America/Pacific";
   i18n.defaultLocale = mkDefault "en_US.UTF-8";
   # For redshift, mainly
   location = (if config.time.timeZone == "America/Toronto" then {
