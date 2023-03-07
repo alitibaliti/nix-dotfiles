@@ -1,6 +1,6 @@
 [user]
 	name = Henrik Lissner
-	email = git@henrik.io
+	email = dt@local
 	signingKey = FA1FADD9440B688CAA75A057B60957CA074D39A3
 [commit]
 	gpgSign = true
@@ -11,9 +11,9 @@
 [init]
 	defaultBranch = main
 [github]
-	user = hlissner
+	user = dt
 [gitlab]
-	user = hlissner
+	user = dt
 [push]
 	autoSquash = true
 [push]

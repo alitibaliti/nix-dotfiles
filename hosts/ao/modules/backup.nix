@@ -15,7 +15,7 @@
   #         echo "---- BACKUPING UP $1 TO $2 ----"
   #         rsync -rlptPJ --delete --delete-after \
   #             --chmod=go= \
-  #             --chown=hlissner:users \
+  #             --chown=hlissner:users \back
   #             --exclude=lost+found/ \
   #             --exclude=@eaDir/ \
   #             --include=.git/ \
