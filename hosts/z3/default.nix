@@ -3,8 +3,47 @@
   imports = [
     ../home.nix
     ./hardware-configuration.nix
+    # ./configuration.nix
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.6"
+  ];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  networking.hostName = "z3"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  # networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "America/Los_Angeles";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
   ## Modules
   modules = {
     desktop = {
@@ -19,11 +58,12 @@
         firefox.enable = true;
         qutebrowser.enable = true;
       };
-      gaming = {
-        steam.enable = true;
-        # emulators.enable = true;
-        # emulators.psx.enable = true;
-      };
+      # gaming = {
+      #   steam.enable = true;
+      #   kernelPackages = pkgs.linuxPackages_latest;
+      #   # emulators.enable = true;
+      #   # emulators.psx.enable = true;
+      # };
       media = {
         daw.enable = true;
         documents.enable = true;
@@ -54,10 +94,10 @@
       adl.enable = true;
       vaultwarden.enable = true;
       direnv.enable = true;
-      git.enable    = true;
-      gnupg.enable  = true;
-      tmux.enable   = true;
-      zsh.enable    = true;
+      git.enable = true;
+      gnupg.enable = true;
+      tmux.enable = true;
+      zsh.enable = true;
     };
     services = {
       ssh.enable = true;
@@ -82,9 +122,9 @@
     services.backups = {
       description = "Backup /usr/store to NAS";
       wants = [ "usr-drive.mount" ];
-      path  = [ pkgs.rsync ];
+      path = [ pkgs.rsync ];
       environment = {
-        SRC_DIR  = "/usr/store";
+        SRC_DIR = "/usr/store";
         DEST_DIR = "/usr/drive";
       };
       script = ''

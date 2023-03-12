@@ -3,9 +3,9 @@
 	email = dt@local
 	signingKey = FA1FADD9440B688CAA75A057B60957CA074D39A3
 [commit]
-	gpgSign = true
+	# gpgSign = true
 [tag]
-	gpgSign = true
+	# gpgSign = true
 [core]
 	whitespace = trailing-space
 [init]
@@ -18,7 +18,7 @@
 	autoSquash = true
 [push]
 	default = current
-	gpgSign = if-asked
+	# gpgSign = if-asked
 [pull]
 	rebase = true
 [alias]

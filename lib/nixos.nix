@@ -8,6 +8,7 @@ in {
     nixosSystem {
       inherit system;
       specialArgs = { inherit lib inputs system; };
+
       modules = [
         {
           nixpkgs.pkgs = pkgs;
